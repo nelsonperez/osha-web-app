@@ -1,6 +1,6 @@
-<section data-ng-controller="VehiclesController">
+<section data-ng-controller="VehicleModelsController">
     <div class="page-header">
-        <h1>New Vehicle</h1>
+        <h1>New Vehicle model</h1>
     </div>
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
@@ -10,10 +10,20 @@
                     <div class="controls">
                         <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
                     </div>
-                    <label class="control-label" for="vim">VIM</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="vim" id="vim" class="form-control" placeholder="Vim" required>
-                    </div>
+
+                <label class="control-label" for="name">Tasks</label>
+                <table>
+                    <tr ng-repeat="task in tasks track by $index" data-ng-model="tasks">
+                        <td>{{task}}</td>
+                        <td><a class="remove-button" ng-click="tasks.splice($index, 1)">Remove</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                         <input type="text" size="100" ng-model="newTask"><a class="btn-link icon-bar" ng-click="addTask()">Add task</a>
+                        </td>
+                    </tr>
+
+                </table>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-default">

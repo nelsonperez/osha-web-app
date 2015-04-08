@@ -1,0 +1,25 @@
+<section data-ng-controller="VehicleModelsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Vehicle models</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="vehicleModel in vehicleModels" data-ng-href="#!/vehicle-models/{{vehicleModel._id}}" class="list-group-item">
+			<!-- small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="vehicleModel.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="vehicleModel.user.displayName"></span>
+			</small -->
+			<h3 class="list-group-item-heading" data-ng-bind="vehicleModel.name"></h3>
+            <h4>Tasks</h4>
+            <ul>
+               <li  data-ng-repeat="task in vehicleModel.tasks">
+                   {{task}}
+               </li>
+            </ul>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!vehicleModels.$resolved || vehicleModels.length">
+    	No Vehicle models yet, why don't you <a href="/#!/vehicle-models/create">create one</a>?
+    </div>
+</section>

@@ -7,22 +7,17 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 /**
- * Vehicle Schema
+ * Vehicle model Schema
  */
-var VehicleSchema = new Schema({
+var VehicleModelSchema = new Schema({
 	name: {
 		type: String,
 		default: '',
-		required: 'Please fill Vehicle name',
+		required: 'Please fill Vehicle model name',
 		trim: true
 	},
-    vim: {
-        type: String,
-        default: '',
-        required: 'Please fill VIM',
-        trim: true
-    },
-    created: {
+    tasks: [String],
+	created: {
 		type: Date,
 		default: Date.now
 	},
@@ -32,4 +27,4 @@ var VehicleSchema = new Schema({
 	}
 });
 
-mongoose.model('Vehicle', VehicleSchema);
+mongoose.model('VehicleModel', VehicleModelSchema);

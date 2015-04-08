@@ -9,15 +9,17 @@ angular.module('vehicles').controller('VehiclesController', ['$scope', '$statePa
 		$scope.create = function() {
 			// Create new Vehicle object
 			var vehicle = new Vehicles ({
-				name: this.name
+				name: this.name,
+                vim: this.vim
 			});
 
-			// Redirect after save
+			// Redirect to vehicles list after save
 			vehicle.$save(function(response) {
-				$location.path('vehicles/' + response._id);
+				$location.path('vehicles');
 
 				// Clear form fields
 				$scope.name = '';
+                $scope.vim = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

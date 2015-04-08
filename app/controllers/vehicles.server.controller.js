@@ -12,6 +12,7 @@ var mongoose = require('mongoose'),
  * Create a Vehicle
  */
 exports.create = function(req, res) {
+    console.log(req);
 	var vehicle = new Vehicle(req.body);
 	vehicle.user = req.user;
 
